@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Feedback</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+        .star {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .star:hover {
+            transform: scale(1.2);
+        }
+        .selected {
+            filter: drop-shadow(0 0 5px gold);
+        }
+        .char-counter {
+            font-size: 12px;
+            text-align: right;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .thank-you {
+            display: none;
+            font-size: 18px;
+            color: green;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🌟 Website Feedback</h2>
+
+    <label for="email">Your Email (Optional)</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Rate Your Experience</label>
+    <div class="star-rating" id="starRating">
+        <span class="star" data-value="1">😡</span>
+        <span class="star" data-value="2">🙁</span>
+        <span class="star" data-value="3">😐</span>
+        <span class="star" data-value="4">😊</span>
+        <span class="star" data-value="5">😍</span>
+    </div>
+
+    <label for="feedback">Your Feedback</label>
+    <textarea id="feedback" rows="4" maxlength="250" placeholder="Tell us what you think..."></textarea>
+    <div class="char-counter" id="charCounter">0 / 250</div>
+
+    <button onclick="submitFeedback()">Submit Feedback</button>
+
+    <div class="thank-you" id="thankYouMessage">🎉 Thank you for your feedback!</div>
+</div>
+
+<script>
+    let selectedRating = 0;
+
+    // Star rating selection
+    document.querySelectorAll(".star").forEach(star => {
+        star.addEventListener("click", function() {
+            selectedRating = this.getAttribute("data-value");
+            document.querySelectorAll(".star").forEach(s => s.classList.remove("selected"));
+            for (let i = 0; i < selectedRating; i++) {
+                document.querySelectorAll(".star")[i].classList.add("selected");
+            }
+        });
+    });
+
+    // Character counter for feedback
+    document.getElementById("feedback").addEventListener("input", function() {
+        document.getElementById("charCounter").innerText = `${this.value.length} / 250`;
+    });
+
+    // Submit feedback function
+    function submitFeedback() {
+        const email = document.getElementById("email").value;
+        const feedback = document.getElementById("feedback").value;
+        const thankYouMessage = document.getElementById("thankYouMessage");
+
+        if (!selectedRating) {
+            alert("Please rate your experience!");
+            return;
+        }
+        if (feedback.length < 10) {
+            alert("Feedback must be at least 10 characters long!");
+            return;
+        }
+
+        // Show thank-you message
+        thankYouMessage.style.display = "block";
+
+        // Hide form after submission (Optional)
+        setTimeout(() => {
+            window.location.href = "index.html"; // Redirect to home page after submission
+        }, 2000); // Redirect after 2 seconds
+    }
+</script>
+
+</body>
+</html>

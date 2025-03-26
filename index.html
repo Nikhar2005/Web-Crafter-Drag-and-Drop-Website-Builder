@@ -1,0 +1,75 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebCrafter</title>
+  <link rel="icon" href="cropped_image.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  
+  <div class="container">
+    <div class="sidebar">
+      <h3>Toolbox</h3>
+      <button class="tool" draggable="true" data-type="text">Text</button>
+      <button class="tool" draggable="true" data-type="image">Image</button>
+      <button class="tool" draggable="true" data-type="button">Button</button>
+      <button class="tool" draggable="true" data-type="section">Section</button>
+
+      <!-- Inside the sidebar -->
+      <div class="heading-dropdown">
+        <button class="tool heading-dropdown-btn" id="headingDropdownBtn">Heading</button>
+        <div class="heading-dropdown-content" id="headingDropdownContent">
+          <button class="heading-option" data-type="h1">h1</button>
+          <button class="heading-option" data-type="h2">h2</button>
+          <button class="heading-option" data-type="h3">h3</button>
+          <button class="heading-option" data-type="h4">h4</button>
+          <button class="heading-option" data-type="h5">h5</button>
+          <button class="heading-option" data-type="h6">h6</button>
+        </div>
+      </div>
+
+      <!-- Form Dropdown -->
+      <div class="form-dropdown">
+        <button class="tool form-dropdown-btn" id="form-dropdown-btn">Form</button>
+        <div class="form-dropdown-content" id="form-dropdown-content">
+          <button class="form-element" data-type="input">Input Field</button>
+          <button class="form-element" data-type="checkbox">Checkbox</button>
+          <button class="form-element" data-type="radio">Radio Button</button>
+          <button class="form-element" data-type="textarea">Text Area</button>
+          <button class="form-element" data-type="submit">Submit Button</button>
+          <button class="form-element" data-type="reset">Reset Button</button>
+        </div>
+      </div>
+
+      <!-- CSS Dropdown -->
+      <div class="css-dropdown">
+        <button class="tool css-dropdown-btn" id="css-dropdown-btn">CSS</button>
+        <div class="css-dropdown-content" id="css-dropdown-content">
+          <button class="css-option" data-css="hover">Hover</button>
+          <button class="css-option" data-css="bg-color">Background Color</button>
+          <button class="css-option" data-css="color">Text Color</button>
+        </div>
+      </div>
+
+      <!-- Delete Button -->
+      <button id="deleteButton" class="tool">Delete</button>
+      <button class="nav-button" onclick="window.location.href = 'aboutus.html'">About Us</button>
+      <button class="nav-button" onclick="window.location.href = 'feedback.html'">FeedBack</button>
+      <button class="nav-log-out" onclick="window.location.href = 'login.html'">Log Out</button>  
+    </div>
+
+    <div class="canvas-wrapper">
+      <div id="canvas" class="canvas">
+        <p>Drag elements here</p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
